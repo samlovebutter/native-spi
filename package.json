@@ -1,14 +1,47 @@
 {
-	"name": "ffi-spi",
+	"name": "native-spi",
 	"version": "0.1.0",
+	"description": "Synchronous Linux spidev bindings using the built-in Node.js FFI API.",
 	"type": "module",
-	"private": true,
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "node scripts/build.mjs",
+		"check": "tsc --noEmit",
+		"prepack": "npm run check && npm run build",
+		"start": "node --experimental-ffi index.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/samlovebutter/native-spi.git"
+	},
+	"bugs": {
+		"url": "https://github.com/samlovebutter/native-spi/issues"
+	},
+	"homepage": "https://github.com/samlovebutter/native-spi#readme",
+	"keywords": [
+		"spi",
+		"spidev",
+		"ffi",
+		"linux",
+		"embedded"
+	],
+	"author": "samlovebutter",
+	"license": "MIT",
 	"engines": {
 		"node": ">=26.1.0"
 	},
-	"scripts": {
-		"check": "tsc --noEmit",
-		"start": "node --experimental-ffi index.ts"
+	"publishConfig": {
+		"access": "public"
 	},
 	"devDependencies": {
 		"@types/node": "^26.0.0",

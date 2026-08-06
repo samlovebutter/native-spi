@@ -1,4 +1,4 @@
-# ffi-spi
+# native-spi
 
 A synchronous Node.js wrapper around Linux SPI (`spidev`) using the built-in `node:ffi` API.
 
@@ -8,6 +8,18 @@ A synchronous Node.js wrapper around Linux SPI (`spidev`) using the built-in `no
 - Linux `arm`, `arm64`, or `x64`;
 - Node.js started with `--experimental-ffi`;
 - user access to the required `/dev/spidev*` device.
+
+## Installation
+
+```sh
+npm install native-spi
+```
+
+Applications using this package must be started with FFI enabled:
+
+```sh
+node --experimental-ffi app.js
+```
 
 ## Running
 
@@ -34,10 +46,21 @@ Native library paths are resolved relative to `index.ts`, so loading does not de
 
 ## Usage
 
+List the available Linux SPI devices before opening one:
+
+```ts
+import { SPIdevice } from "native-spi";
+
+const devices = SPIdevice.list();
+console.log(devices); // ["/dev/spidev0.0", "/dev/spidev0.1"]
+```
+
+When `path` is omitted, `SPIdevice` automatically opens the first device that is not already used by another `SPIdevice` instance in the current process.
+
 The base mode and additional flags are combined into one bit field:
 
 ```ts
-import { SPIdevice, SPI_MODE_FLAGS, SPI_MODE_PRESETS } from "./index.ts";
+import { SPIdevice, SPI_MODE_FLAGS, SPI_MODE_PRESETS } from "native-spi";
 
 using spi = new SPIdevice({
 	path: "/dev/spidev0.0",
