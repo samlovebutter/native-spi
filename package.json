@@ -1,0 +1,17 @@
+{
+	"name": "ffi-spi",
+	"version": "0.1.0",
+	"type": "module",
+	"private": true,
+	"engines": {
+		"node": ">=26.1.0"
+	},
+	"scripts": {
+		"check": "tsc --noEmit",
+		"start": "node --experimental-ffi index.ts"
+	},
+	"devDependencies": {
+		"@types/node": "^26.0.0",
+		"typescript": "^6.0.0"
+	}
+}
