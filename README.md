@@ -4,7 +4,7 @@ A synchronous Node.js wrapper around Linux SPI (`spidev`) using the built-in `no
 
 ## Requirements
 
-- Node.js 26.1 or newer;
+- Node.js 26.7 or newer;
 - Linux `arm`, `arm64`, or `x64`;
 - Node.js started with `--experimental-ffi`;
 - user access to the required `/dev/spidev*` device.

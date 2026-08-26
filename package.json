@@ -38,13 +38,13 @@
 	"author": "samlovebutter",
 	"license": "MIT",
 	"engines": {
-		"node": ">=26.1.0"
+		"node": ">=26.7.0"
 	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"devDependencies": {
-		"@types/node": "^26.0.0",
+		"@types/node": "^26.3.0",
 		"typescript": "^6.0.0"
 	}
 }
